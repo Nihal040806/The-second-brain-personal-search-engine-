@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocuMind - Intelligent Document Query</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <aside class="sidebar">
+            <div class="logo-area">
+                <h2><i class="fa-solid fa-brain"></i> DocuMind</h2>
+            </div>
+            
+            <button class="new-chat-btn"><i class="fa-solid fa-plus"></i> New Chat</button>
+
+            <div class="history-list">
+                <p class="section-title">Your Documents</p>
+                <div class="history-item"><i class="fa-regular fa-file-pdf"></i> Algorithms_ Notes.pdf</div>
+                <div class="history-item"><i class="fa-regular fa-file-pdf"></i> Project_Roadmap.pdf</div>
+                <div class="history-item"><i class="fa-regular fa-file-pdf"></i> Research_Paper_v2.pdf</div>
+            </div>
+
+            <div class="user-settings">
+                <button id="theme-toggle" class="toggle-btn">
+                    <i class="fa-solid fa-moon"></i> Dark Mode
+                </button>
+            </div>
+        </aside>
+
+        <main class="chat-interface">
+            
+            <div class="chat-history" id="chat-container">
+                
+                <div class="message ai-message">
+                    <div class="avatar"><i class="fa-solid fa-robot"></i></div>
+                    <div class="content">
+                        Hello! Upload a PDF to create your "Second Brain." I'm ready to answer your questions.
+                    </div>
+                </div>
+
+                <div class="message user-message">
+                    <div class="avatar"><i class="fa-solid fa-user"></i></div>
+                    <div class="content">
+                        What are the functional requirements for the frontend?
+                    </div>
+                </div>
+
+                <div class="message ai-message">
+                    <div class="avatar"><i class="fa-solid fa-robot"></i></div>
+                    <div class="content">
+                        According to the roadmap, the frontend requires a drag-and-drop interface, a chat view with scrolling history, a "Thinking" animation, and a Dark Mode toggle.
+                    </div>
+                </div>
+
+                <div class="message ai-message thinking" id="thinking-indicator" style="display: none;">
+                    <div class="avatar"><i class="fa-solid fa-robot"></i></div>
+                    <div class="content">
+                        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="input-area">
+                
+                <div class="upload-zone" id="drop-zone">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <span>Drag & Drop PDF here</span>
+                    <input type="file" id="file-input" accept="application/pdf" hidden>
+                </div>
+
+                <div class="text-input-wrapper">
+                    <input type="text" placeholder="Ask a question about your PDF..." id="user-input">
+                    <button class="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+                
+                <p class="disclaimer">DocuMind can make mistakes. Check important info.</p>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        const body = document.body;
+        const icon = toggleBtn.querySelector('i');
+
+        toggleBtn.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if(body.classList.contains('dark-mode')){
+                toggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i> Light Mode';
+            } else {
+                toggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i> Dark Mode';
+            }
+        });
+    </script>
+</body>
+</html>
